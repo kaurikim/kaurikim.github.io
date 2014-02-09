@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Test | My Octopress Blog]]></title>
-  <link href="http://yoursite.com/blog/categories/test/atom.xml" rel="self"/>
-  <link href="http://yoursite.com/"/>
-  <updated>2014-02-10T01:40:57+09:00</updated>
-  <id>http://yoursite.com/</id>
+  <title><![CDATA[Category: Test | Kauri Blog]]></title>
+  <link href="http://kaurikim.github.io/blog/categories/test/atom.xml" rel="self"/>
+  <link href="http://kaurikim.github.io/"/>
+  <updated>2014-02-10T01:57:46+09:00</updated>
+  <id>http://kaurikim.github.io/</id>
   <author>
-    <name><![CDATA[Your Name]]></name>
+    <name><![CDATA[Kim Sung-Jo]]></name>
     
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Hello ;)]]></title>
-    <link href="http://yoursite.com/blog/2014/02/10/hello/"/>
+    <link href="http://kaurikim.github.io/blog/2014/02/10/hello/"/>
     <updated>2014-02-10T00:46:26+09:00</updated>
-    <id>http://yoursite.com/blog/2014/02/10/hello</id>
+    <id>http://kaurikim.github.io/blog/2014/02/10/hello</id>
     <content type="html"><![CDATA[<h1>hi ;P</h1>
 
 <ul>
