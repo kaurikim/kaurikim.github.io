@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[My Octopress Blog]]></title>
+  <link href="http://yoursite.com/atom.xml" rel="self"/>
+  <link href="http://yoursite.com/"/>
+  <updated>2014-02-10T01:40:57+09:00</updated>
+  <id>http://yoursite.com/</id>
+  <author>
+    <name><![CDATA[Your Name]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Hello ;)]]></title>
+    <link href="http://yoursite.com/blog/2014/02/10/hello/"/>
+    <updated>2014-02-10T00:46:26+09:00</updated>
+    <id>http://yoursite.com/blog/2014/02/10/hello</id>
+    <content type="html"><![CDATA[<h1>hi ;P</h1>
+
+<ul>
+<li>test
+
+<ul>
+<li>test2
+
+<ol>
+<li> test3</li>
+<li> test4
+
+<ul>
+<li>test5</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>asdf</li>
+</ul>
+</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">import</span> <span class="nn">sys</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">sys</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">Tst</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span class='line'>        <span class="k">pass</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<blockquote><p>adfasdf </br>
+asdfdafdsf
+asdfdafdsfasdfasfdf</p></blockquote>
+
+<pre><code>sadfasdfasfdsafsadfasfasdfdsafsadffasdfdasf 
+# hihihi
+
+* adfadsf
+    * asdfadsfa
+</code></pre>
+]]></content>
+  </entry>
+  
+</feed>
