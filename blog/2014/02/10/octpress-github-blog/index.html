@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Category: Test - Kauri Blog</title>
+  <title>Octpress 를 사용하여 GitHub Pages 에 Blog 만들기 - Kauri Blog</title>
   <meta name="author" content="Kim Sung-Jo">
 
   
-  <meta name="description" content="Category: test">
+  <meta name="description" content="quick guide github pages 생성 http://pages.github.com/ 개인 pc 에 octpress 설치 http://octopress.org/docs/setup/ octpress 설정 http://octopress.org/docs/ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://kaurikim.github.ioblog/categories/test">
+  <link rel="canonical" href="http://kaurikim.github.io/blog/2014/02/10/octpress-github-blog">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Kauri Blog" type="application/atom+xml">
@@ -62,35 +62,145 @@
   <div id="main">
     <div id="content">
       <div>
-<article role="article">
+<article class="hentry" role="article">
   
   <header>
-    <h1 class="entry-title">Category: Test</h1>
+    
+      <h1 class="entry-title">Octpress 를 사용하여 GitHub Pages 에 Blog 만들기</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-02-10T02:17:43+09:00" pubdate data-updated="true">Feb 10<span>th</span>, 2014</time>
+        
+      </p>
     
   </header>
-  
-  <div id="blog-archives" class="category">
 
 
+<div class="entry-content"><h1>quick guide</h1>
 
-  
-  <h2>2014</h2>
+<ol>
+<li>github pages 생성
 
-<article>
-  
-<h1><a href="/blog/2014/02/10/hello/">Hello ;)</a></h1>
-<time datetime="2014-02-10T00:46:26+09:00" pubdate><span class='month'>Feb</span> <span class='day'>10</span> <span class='year'>2014</span></time>
+<ul>
+<li><a href="http://pages.github.com/">http://pages.github.com/</a></li>
+</ul>
+</li>
+<li>개인 pc 에 octpress 설치
 
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/test/'>test</a></span>
-</footer>
+<ul>
+<li><a href="http://octopress.org/docs/setup/">http://octopress.org/docs/setup/</a></li>
+</ul>
+</li>
+<li>octpress 설정
 
+<ul>
+<li><a href="http://octopress.org/docs/configuring/">http://octopress.org/docs/configuring/</a></li>
+</ul>
+</li>
+<li>test post page 만들기
 
-</article>
+<ul>
+<li>rake new_post &ldquo;post title&rdquo;</li>
+<li><a href="http://octopress.org/docs/blogging/">http://octopress.org/docs/blogging/</a></li>
+</ul>
+</li>
+<li>생성된 post 파일에 내용 작성
+
+<ul>
+<li>vi source/_posts/2014-02-10-octpress-github-blog.markdown</li>
+</ul>
+</li>
+<li>makrdown &ndash;> html 으로 변경
+
+<ul>
+<li>rake generate</li>
+</ul>
+</li>
+<li>생성된 blog 와 post page 웹에서 점점
+
+<ul>
+<li>rake preivew</li>
+<li>localhost:4000 으로 접속</li>
+</ul>
+</li>
+<li>생성된 blog 와 post 를 github pages 에 등록
+
+<ul>
+<li><a href="http://octopress.org/docs/deploying/github/">http://octopress.org/docs/deploying/github/</a> 참고</li>
+<li>rake setup_github_pages</li>
+<li>rake deploy</li>
+</ul>
+</li>
+<li>github pages url 로 접속하여 개시된 blog 확인</li>
+</ol>
 
 </div>
 
+
+  <footer>
+    <p class="meta">
+      
   
+
+<span class="byline author vcard">Posted by <span class="fn">Kim Sung-Jo</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-02-10T02:17:43+09:00" pubdate data-updated="true">Feb 10<span>th</span>, 2014</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/blog/'>blog</a>, <a class='category' href='/blog/categories/markdown/'>markdown</a>, <a class='category' href='/blog/categories/tools/'>tools</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://kaurikim.github.io/blog/2014/02/10/octpress-github-blog/" data-via="" data-counturl="http://kaurikim.github.io/blog/2014/02/10/octpress-github-blog/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2014/02/10/hello/" title="Previous Post: hello ;)">&laquo; hello ;)</a>
+      
+      
+    </p>
+  </footer>
 </article>
 
 </div>

@@ -9,14 +9,7 @@
   <meta name="author" content="Kim Sung-Jo">
 
   
-  <meta name="description" content="hi ;P test test2 test3 test4 test5 asdf 1
-2
-3
-4
-5
-6
-7
-import sys sys.sleep(5) class Tst(object): def __init__(self): pass adfasdf asdfdafdsf &hellip;">
+  <meta name="description" content="quick guide github pages 생성 http://pages.github.com/ 개인 pc 에 octpress 설치 http://octopress.org/docs/setup/ octpress 설정 http://octopress.org/docs/ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -70,6 +63,99 @@ import sys sys.sleep(5) class Tst(object): def __init__(self): pass adfasdf asdf
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/02/10/octpress-github-blog/">Octpress 를 사용하여 GitHub Pages 에 Blog 만들기</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-02-10T02:17:43+09:00" pubdate data-updated="true">Feb 10<span>th</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h1>quick guide</h1>
+
+<ol>
+<li>github pages 생성
+
+<ul>
+<li><a href="http://pages.github.com/">http://pages.github.com/</a></li>
+</ul>
+</li>
+<li>개인 pc 에 octpress 설치
+
+<ul>
+<li><a href="http://octopress.org/docs/setup/">http://octopress.org/docs/setup/</a></li>
+</ul>
+</li>
+<li>octpress 설정
+
+<ul>
+<li><a href="http://octopress.org/docs/configuring/">http://octopress.org/docs/configuring/</a></li>
+</ul>
+</li>
+<li>test post page 만들기
+
+<ul>
+<li>rake new_post &ldquo;post title&rdquo;</li>
+<li><a href="http://octopress.org/docs/blogging/">http://octopress.org/docs/blogging/</a></li>
+</ul>
+</li>
+<li>생성된 post 파일에 내용 작성
+
+<ul>
+<li>vi source/_posts/2014-02-10-octpress-github-blog.markdown</li>
+</ul>
+</li>
+<li>makrdown &ndash;> html 으로 변경
+
+<ul>
+<li>rake generate</li>
+</ul>
+</li>
+<li>생성된 blog 와 post page 웹에서 점점
+
+<ul>
+<li>rake preivew</li>
+<li>localhost:4000 으로 접속</li>
+</ul>
+</li>
+<li>생성된 blog 와 post 를 github pages 에 등록
+
+<ul>
+<li><a href="http://octopress.org/docs/deploying/github/">http://octopress.org/docs/deploying/github/</a> 참고</li>
+<li>rake setup_github_pages</li>
+<li>rake deploy</li>
+</ul>
+</li>
+<li>github pages url 로 접속하여 개시된 blog 확인</li>
+</ol>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -168,6 +254,10 @@ asdfdafdsfasdfasfdf</p></blockquote>
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/02/10/octpress-github-blog/">Octpress 를 사용하여 GitHub Pages 에 Blog 만들기</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2014/02/10/hello/">Hello ;)</a>
