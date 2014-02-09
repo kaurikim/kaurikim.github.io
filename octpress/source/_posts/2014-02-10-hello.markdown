@@ -1,0 +1,36 @@
+---
+layout: post
+title: "hello ;)"
+date: 2014-02-10 00:46:26 +0900
+comments: true
+categories: test
+---
+
+# hi ;P
+
+* test 
+    * test2
+        1. test3
+        1. test4
+            - test5
+    + asdf
+
+```python 
+import sys
+
+sys.sleep(5)
+
+class Tst(object):
+    def __init__(self):
+        pass
+```
+
+> adfasdf </br>
+> asdfdafdsf
+> asdfdafdsfasdfasfdf
+
+    sadfasdfasfdsafsadfasfasdfdsafsadffasdfdasf 
+    # hihihi
+
+    * adfadsf
+        * asdfadsfa
