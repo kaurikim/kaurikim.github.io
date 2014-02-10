@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Tools | Kauri Blog]]></title>
   <link href="http://kaurikim.github.io/blog/categories/tools/atom.xml" rel="self"/>
   <link href="http://kaurikim.github.io/"/>
-  <updated>2014-02-10T12:58:40+09:00</updated>
+  <updated>2014-02-11T00:53:27+09:00</updated>
   <id>http://kaurikim.github.io/</id>
   <author>
     <name><![CDATA[Kim Sung-Jo]]></name>
@@ -15,10 +15,10 @@
   
   <entry>
     <title type="html"><![CDATA[Octopress 를 사용하여 GitHub Pages 에 Blog 만들기]]></title>
-    <link href="http://kaurikim.github.io/blog/2014/02/10/octopress-github-blog/"/>
-    <updated>2014-02-10T02:17:43+09:00</updated>
-    <id>http://kaurikim.github.io/blog/2014/02/10/octopress-github-blog</id>
-    <content type="html"><![CDATA[<h1>quick guide</h1>
+    <link href="http://kaurikim.github.io/blog/2014/02/11/octopress-github-blog/"/>
+    <updated>2014-02-11T00:47:13+09:00</updated>
+    <id>http://kaurikim.github.io/blog/2014/02/11/octopress-github-blog</id>
+    <content type="html"><![CDATA[<h1>quick install guide</h1>
 
 <ol>
 <li>github pages 생성
@@ -37,12 +37,8 @@
 
 <ul>
 <li><a href="http://octopress.org/docs/configuring/">http://octopress.org/docs/configuring/</a></li>
-</ul>
-</li>
-<li>test post page 만들기
-
-<ul>
-<li>rake new_post &ldquo;post title&rdquo;</li>
+<li>test post page 만들기</li>
+<li>rake new_post[&ldquo;post title&rdquo;]</li>
 <li><a href="http://octopress.org/docs/blogging/">http://octopress.org/docs/blogging/</a></li>
 </ul>
 </li>
@@ -52,7 +48,7 @@
 <li>vi source/_posts/2014-02-10-octopress-github-blog.markdown</li>
 </ul>
 </li>
-<li>markdown &ndash;> html 으로 변경
+<li>markdown –> html 으로 변환
 
 <ul>
 <li>rake generate</li>
