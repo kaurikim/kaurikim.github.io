@@ -4,7 +4,7 @@
   <title><![CDATA[Kauri Blog]]></title>
   <link href="http://kaurikim.github.io/atom.xml" rel="self"/>
   <link href="http://kaurikim.github.io/"/>
-  <updated>2014-02-10T03:09:13+09:00</updated>
+  <updated>2014-02-10T12:49:31+09:00</updated>
   <id>http://kaurikim.github.io/</id>
   <author>
     <name><![CDATA[Kim Sung-Jo]]></name>
@@ -12,6 +12,22 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Hihi]]></title>
+    <link href="http://kaurikim.github.io/blog/2014/02/10/hihi/"/>
+    <updated>2014-02-10T12:48:42+09:00</updated>
+    <id>http://kaurikim.github.io/blog/2014/02/10/hihi</id>
+    <content type="html"><![CDATA[<h1>hihi</h1>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">import</span> <span class="nn">sys</span>
+</span><span class='line'><span class="n">sys</span><span class="o">.</span><span class="n">time</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Octopress 를 사용하여 GitHub Pages 에 Blog 만들기]]></title>
