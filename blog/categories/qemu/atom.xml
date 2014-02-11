@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Tools | Kauri Blog]]></title>
-  <link href="http://kaurikim.github.io/blog/categories/tools/atom.xml" rel="self"/>
+  <title><![CDATA[Category: Qemu, | Kauri Blog]]></title>
+  <link href="http://kaurikim.github.io/blog/categories/qemu/atom.xml" rel="self"/>
   <link href="http://kaurikim.github.io/"/>
   <updated>2014-02-11T23:01:17+09:00</updated>
   <id>http://kaurikim.github.io/</id>
@@ -107,81 +107,6 @@ main(opts)
 </code></pre>
 
 <p>```</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Octopress 를 사용하여 GitHub Pages 에 Blog 만들기]]></title>
-    <link href="http://kaurikim.github.io/blog/2014/02/11/octopress-github-blog/"/>
-    <updated>2014-02-11T00:47:13+09:00</updated>
-    <id>http://kaurikim.github.io/blog/2014/02/11/octopress-github-blog</id>
-    <content type="html"><![CDATA[<h1>quick install guide</h1>
-
-<ol>
-<li>github pages 생성
-
-<ul>
-<li><a href="http://pages.github.com/">http://pages.github.com/</a></li>
-</ul>
-</li>
-<li>개인 pc 에 octopress 설치
-
-<ul>
-<li><a href="http://octopress.org/docs/setup/">http://octopress.org/docs/setup/</a></li>
-</ul>
-</li>
-<li>octopress 설정
-
-<ul>
-<li><a href="http://octopress.org/docs/configuring/">http://octopress.org/docs/configuring/</a></li>
-<li>test post page 만들기</li>
-<li>rake new_post[&ldquo;post title&rdquo;]</li>
-<li><a href="http://octopress.org/docs/blogging/">http://octopress.org/docs/blogging/</a></li>
-</ul>
-</li>
-<li>생성된 post 파일에 내용 작성
-
-<ul>
-<li>vi source/_posts/2014-02-10-octopress-github-blog.markdown</li>
-</ul>
-</li>
-<li>markdown –> html 으로 변환
-
-<ul>
-<li>rake generate</li>
-<li>markdown 문법 아래 참고
-
-<ul>
-<li><a href="http://ko.wikipedia.org/wiki/%EB%A7%88%ED%81%AC%EB%8B%A4%EC%9A%B4">http://ko.wikipedia.org/wiki/%EB%A7%88%ED%81%AC%EB%8B%A4%EC%9A%B4</a></li>
-<li><a href="http://daringfireball.net/projects/markdown/syntax">http://daringfireball.net/projects/markdown/syntax</a></li>
-<li><a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li>생성된 blog 와 post page 웹에서 점점
-
-<ul>
-<li>rake preivew</li>
-<li>localhost:4000 으로 접속</li>
-</ul>
-</li>
-<li>생성된 blog 와 post 를 github pages 에 등록
-
-<ul>
-<li>rake setup_github_pages</li>
-<li>rake deploy</li>
-<li><a href="http://octopress.org/docs/deploying/github/">http://octopress.org/docs/deploying/github/</a> 참고</li>
-</ul>
-</li>
-<li>github pages url 로 접속하여 개시된 blog 확인
-
-<ul>
-<li><a href="http://kaurikim.github.io">http://kaurikim.github.io</a></li>
-</ul>
-</li>
-</ol>
-
 ]]></content>
   </entry>
   

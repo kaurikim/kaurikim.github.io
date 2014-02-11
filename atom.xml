@@ -4,7 +4,7 @@
   <title><![CDATA[Kauri Blog]]></title>
   <link href="http://kaurikim.github.io/atom.xml" rel="self"/>
   <link href="http://kaurikim.github.io/"/>
-  <updated>2014-02-11T02:00:29+09:00</updated>
+  <updated>2014-02-11T23:01:17+09:00</updated>
   <id>http://kaurikim.github.io/</id>
   <author>
     <name><![CDATA[Kim Sung-Jo]]></name>
@@ -12,6 +12,145 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[QEMU MONITOR 사용하여 Guest OS 상태 확인]]></title>
+    <link href="http://kaurikim.github.io/blog/2014/02/11/qemu-monitor-debug/"/>
+    <updated>2014-02-11T14:22:15+09:00</updated>
+    <id>http://kaurikim.github.io/blog/2014/02/11/qemu-monitor-debug</id>
+    <content type="html"><![CDATA[<p>guest os 에 접근할 수 없는 경우, 아래와 같이 QEMU MONITOR 기능을 사용하여 guest os 의 디버그 정보를 획득한다.  (qemu/monitor 명령어 참고: <a href="http://en.wikibooks.org/wiki/QEMU/Monitor">http://en.wikibooks.org/wiki/QEMU/Monitor</a>)</p>
+
+<ul>
+<li>cpu register 정보
+
+<ul>
+<li>virsh qemu-monitor-command &mdash;hmp <GUEST NAME> info registers</li>
+</ul>
+</li>
+<li>sysrq 를 사용하여 커널의 상태 정보 획득
+
+<ul>
+<li>sysrq 참고: <a href="https://www.kernel.org/doc/Documentation/sysrq.txt">https://www.kernel.org/doc/Documentation/sysrq.txt</a></li>
+<li>&ldquo;virsh console <GUEST NAME>&rdquo; 명령어를 사용하여 console 에 연결</li>
+<li>&ldquo;virsh qemu-monitor-command &mdash;hmp v1 sendkey alt-sysrq-7&rdquo; 명령어를 사용하여 커널의 로그 레벨을 debug 레벨로 변경</li>
+<li>&ldquo;virsh qemu-monitor-command &mdash;hmp v1 sendkey alt-sysrq-t&rdquo; 명령어를 사용하여 process 의 정보를 확인</li>
+</ul>
+</li>
+<li>커널 로그 확인
+
+<ul>
+<li>커널의 __log_buf 주소를 System.map 또는 아래와 같이 /proc/kallsysms 파일에서 확인</li>
+<li>&ldquo;virsh qemu-monitor-command &mdash;hmp v2  &lsquo;x/65000hc 0xffffff818d8ca0&rsquo; &rdquo; 명령어를 사용하여 __log_buf  확인</li>
+<li>아래 코드를 사용하여 덤프된 데이터를 가독성 있는 포맷으로 변환</li>
+</ul>
+</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="c">#!/usr/bin/env python</span>
+</span><span class='line'>
+</span><span class='line'><span class="kn">import</span> <span class="nn">os</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">sys</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">string</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">print_klog</span><span class="p">(</span><span class="n">fname</span><span class="p">):</span>
+</span><span class='line'>    <span class="n">space_cnt</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class='line'>    <span class="n">buf</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>
+</span><span class='line'>    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="s">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+</span><span class='line'>        <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+</span><span class='line'>            <span class="n">line</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
+</span><span class='line'>            <span class="k">if</span> <span class="ow">not</span> <span class="n">line</span><span class="p">:</span>
+</span><span class='line'>                <span class="k">break</span>
+</span><span class='line'>            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">line</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+</span><span class='line'>                <span class="k">continue</span>
+</span><span class='line'>            <span class="n">tlist</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;: &#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">:]</span>
+</span><span class='line'>            <span class="n">rlist</span> <span class="o">=</span>  <span class="n">tlist</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&quot;&#39;&quot;</span><span class="p">)</span>
+</span><span class='line'>            <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">rlist</span><span class="p">:</span>
+</span><span class='line'>                <span class="k">if</span> <span class="n">item</span> <span class="o">==</span> <span class="s">&#39; &#39;</span><span class="p">:</span>
+</span><span class='line'>                    <span class="k">if</span> <span class="n">space_cnt</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+</span><span class='line'>                        <span class="n">space_cnt</span> <span class="o">+=</span> <span class="mi">1</span>
+</span><span class='line'>                        <span class="k">continue</span><span class="p">;</span>
+</span><span class='line'>                <span class="k">else</span><span class="p">:</span>
+</span><span class='line'>                    <span class="n">space_cnt</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class='line'>
+</span><span class='line'>                <span class="k">if</span> <span class="n">item</span> <span class="ow">is</span> <span class="s">&quot;&quot;</span><span class="p">:</span>
+</span><span class='line'>                    <span class="k">continue</span>
+</span><span class='line'>                <span class="k">if</span> <span class="n">item</span> <span class="o">==</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">:</span>
+</span><span class='line'>                    <span class="k">continue</span>
+</span><span class='line'>                <span class="k">if</span> <span class="n">item</span> <span class="o">==</span> <span class="s">&quot;</span><span class="se">\r\n</span><span class="s">&quot;</span><span class="p">:</span>
+</span><span class='line'>                    <span class="k">continue</span>
+</span><span class='line'>                <span class="k">if</span> <span class="n">item</span> <span class="o">==</span> <span class="s">&quot;</span><span class="se">\\</span><span class="s">n&quot;</span><span class="p">:</span>
+</span><span class='line'>                    <span class="k">print</span> <span class="n">buf</span>
+</span><span class='line'>                    <span class="n">buf</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
+</span><span class='line'>                    <span class="k">continue</span>
+</span><span class='line'>                <span class="n">buf</span> <span class="o">+=</span> <span class="n">item</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">opts</span><span class="p">):</span>
+</span><span class='line'>    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">opts</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+</span><span class='line'>        <span class="k">print</span> <span class="s">&#39;usage: </span><span class="si">%s</span><span class="s"> hexdump_file&#39;</span> <span class="o">%</span> <span class="n">opts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</span><span class='line'>        <span class="k">return</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">print_klog</span><span class="p">(</span><span class="n">opts</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">return</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+</span><span class='line'>    <span class="n">opts</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span>
+</span><span class='line'>    <span class="n">main</span><span class="p">(</span><span class="n">opts</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Octopress 를 사용하여 GitHub Pages 에 Blog 만들기]]></title>
