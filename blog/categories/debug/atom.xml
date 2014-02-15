@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Debug, | Kauri Blog]]></title>
   <link href="http://kaurikim.github.io/blog/categories/debug/atom.xml" rel="self"/>
   <link href="http://kaurikim.github.io/"/>
-  <updated>2014-02-11T23:01:17+09:00</updated>
+  <updated>2014-02-16T05:12:01+09:00</updated>
   <id>http://kaurikim.github.io/</id>
   <author>
     <name><![CDATA[Kim Sung-Jo]]></name>
@@ -24,23 +24,28 @@
 <li>cpu register 정보
 
 <ul>
-<li>virsh qemu-monitor-command &mdash;hmp <GUEST NAME> info registers</li>
+<li><code>virsh qemu-monitor-command --hmp &lt;GUEST NAME&gt; info registers</code></li>
 </ul>
 </li>
 <li>sysrq 를 사용하여 커널의 상태 정보 획득
 
 <ul>
 <li>sysrq 참고: <a href="https://www.kernel.org/doc/Documentation/sysrq.txt">https://www.kernel.org/doc/Documentation/sysrq.txt</a></li>
-<li>&ldquo;virsh console <GUEST NAME>&rdquo; 명령어를 사용하여 console 에 연결</li>
-<li>&ldquo;virsh qemu-monitor-command &mdash;hmp v1 sendkey alt-sysrq-7&rdquo; 명령어를 사용하여 커널의 로그 레벨을 debug 레벨로 변경</li>
-<li>&ldquo;virsh qemu-monitor-command &mdash;hmp v1 sendkey alt-sysrq-t&rdquo; 명령어를 사용하여 process 의 정보를 확인</li>
+<li><code>virsh console &lt;vm name&gt;</code> 명령어를 사용하여 console 에 연결</li>
+<li><code>virsh qemu-monitor-command --hmp &lt;vm name&gt;  sendkey alt-sysrq-7</code>
+명령어를 사용하여 커널의 로그 레벨을 debug 레벨로 변경</li>
+<li><code>virsh qemu-monitor-command --hmp v1 sendkey alt-sysrq-t1</code>
+명령어를 사용하여 process 의 정보를 확인</li>
 </ul>
 </li>
 <li>커널 로그 확인
 
 <ul>
-<li>커널의 __log_buf 주소를 System.map 또는 아래와 같이 /proc/kallsysms 파일에서 확인</li>
-<li>&ldquo;virsh qemu-monitor-command &mdash;hmp v2  &lsquo;x/65000hc 0xffffff818d8ca0&rsquo; &rdquo; 명령어를 사용하여 __log_buf  확인</li>
+<li>참고: <a href="http://wiki.qemu.org/download/qemu-doc.html#pcsys_005fmonitor">http://wiki.qemu.org/download/qemu-doc.html#pcsys_005fmonitor</a></li>
+<li>리눅스 커널의 __log_buf 주소를 System.map 또는
+<code>cat /proc/kallsysms | grep __log_buf</code> 명령어를 사용하여 확인</li>
+<li><code>virsh qemu-monitor-command --hmp v2  'x/65000hc 0xffffff818d8ca0' &gt; hex.dump</code>
+명령어를 사용하여 __log_buf 의 내용 저장</li>
 <li>아래 코드를 사용하여 덤프된 데이터를 가독성 있는 포맷으로 변환</li>
 </ul>
 </li>
